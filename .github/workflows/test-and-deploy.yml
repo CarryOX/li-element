@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v18.14.2
+        uses: actions/checkout
 
       - name: Setup Node
-        uses: actions/setup-node@v18.14.2
+        uses: actions/setup-node
 
       - name: Install pnpm 
         run: npm install -g pnpm
@@ -33,10 +33,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v18.14.2
+        uses: actions/checkout
 
       - name: Setup Node
-        uses: actions/setup-node@v18.14.2
+        uses: actions/setup-node
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -48,7 +48,7 @@ jobs:
         run: npm run docs:build
 
       - name: Upload docs
-        uses: actions/upload-artifact@v18.14.2
+        uses: actions/upload-artifact
         with:
           name: docs
           path: ./packages/docs/.vitepress/dist
@@ -59,12 +59,12 @@ jobs:
     needs: build
     steps:
       - name: Download docs
-        uses: actions/download-artifact@v18.14.2
+        uses: actions/download-artifact
         with:
           name: docs
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v18.14.2
+        uses: peaceiris/actions-gh-pages
         with:
-          github_token: ${{ secrets.GH_LIAO_LI_0607 }} 
+          github_token: ${{ secrets.GH_TOKEN }}
           publish_dir: .
